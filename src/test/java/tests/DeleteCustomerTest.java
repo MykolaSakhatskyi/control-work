@@ -17,21 +17,20 @@ public class DeleteCustomerTest extends BaseTest {
     @Test
     public void addCustomerAndCheckThatCustomerWasAdded () {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.clickBankManagerLoginButton().click();
+        loginPage.clickBankManagerLoginButton();
 
         ManagerPage managerPage = new ManagerPage(driver);
-        managerPage.clickAddCustomerButton().click();
+        managerPage.clickAddCustomerButton();
 
         AddCustomerPage addCustomerPage = new AddCustomerPage(driver);
         addCustomerPage.enterNewUser(firstName, lastName, postCode);
-        addCustomerPage.clickAddCustomerButton().click();
-        driver.switchTo().alert().accept();
-        addCustomerPage.clickCustomersButton().click();
+        alertAccept();
+        addCustomerPage.clickCustomersButton();
 
         CustomersListPage customersListPage = new CustomersListPage(driver);
         customersListPage.enterSearchField(firstName);
-        customersListPage.clickDeleteButton().click();
-        Assert.assertNull(customersListPage.deletedCustomer(),"Customer is not deleted");
+        customersListPage.clickDeleteButton();
+        Assert.assertTrue(customersListPage.deletedCustomer(),"Customer is not deleted");
     }
 
 }

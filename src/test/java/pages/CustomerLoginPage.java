@@ -19,12 +19,8 @@ public class CustomerLoginPage extends ParentBaseClass {
         super(driver);
     }
 
-    public WebElement clickDropdown () {
-        return dropdownList;
-    }
-
-    public WebElement clickLoginButton () {
-        return loginButton;
+    public void clickLoginButton () {
+        loginButton.click();
     }
 
     public void selectNewCustomer(String newCustomer) {

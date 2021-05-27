@@ -17,12 +17,12 @@ public class LoginPage extends ParentBaseClass {
         super(driver);
     }
 
-    public WebElement clickCustomerLoginButton() {
-        return customerLoginButton;
+    public void clickCustomerLoginButton() {
+        customerLoginButton.click();
     }
 
-    public WebElement clickBankManagerLoginButton() {
-        return bankManagerLoginButton;
+    public void clickBankManagerLoginButton() {
+        bankManagerLoginButton.click();
     }
 
 }

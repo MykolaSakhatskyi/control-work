@@ -39,8 +39,8 @@ public class AccountPage extends ParentBaseClass {
         super(driver);
     }
 
-    public WebElement clickTransactionsTab() {
-        return transactionsTab;
+    public void clickTransactionsTab() {
+        transactionsTab.click();
     }
 
     public WebElement getWelcomeText () {
@@ -55,12 +55,12 @@ public class AccountPage extends ParentBaseClass {
         return balance;
     }
 
-    public WebElement clickDepositTab() {
-        return depositTab;
+    public void clickDepositTab() {
+        depositTab.click();
     }
 
-    public WebElement clickDepositAndWithdrawButton() {
-        return depositAndWithdrawButton;
+    public void clickDepositAndWithdrawButton() {
+        depositAndWithdrawButton.click();
     }
 
     public WebElement sendAmountDepositAndWithdrawField() {
@@ -71,8 +71,8 @@ public class AccountPage extends ParentBaseClass {
         return successfulOrErrorMassage;
     }
 
-    public WebElement clickWithdrawTab() {
-        return withdrawTab;
+    public void clickWithdrawTab() {
+        withdrawTab.click();
     }
 
 }

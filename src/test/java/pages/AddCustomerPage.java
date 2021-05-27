@@ -32,24 +32,21 @@ public class AddCustomerPage extends ParentBaseClass {
         super(driver);
     }
 
-    public WebElement clickHomeButton() {
-        return homeButton;
+    public void clickHomeButton() {
+        homeButton.click();
     }
 
-    public WebElement clickAddCustomerButton() {
-        return addCustomerButton;
-    }
+    public void clickOpenAccountButton() {
+        openAccountButton.click();}
 
-    public WebElement clickOpenAccountButton() {
-        return openAccountButton;}
-
-    public WebElement clickCustomersButton() {
-        return customersButton;}
+    public void clickCustomersButton() {
+        customersButton.click();}
 
     public void enterNewUser(String firstName, String lastName, String postCode) {
         firstNameField.sendKeys(firstName);
         lastNameField.sendKeys(lastName);
         postCodeField.sendKeys(postCode);
+        addCustomerButton.click();
     }
 
 }
