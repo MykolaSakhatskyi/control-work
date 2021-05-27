@@ -7,9 +7,6 @@ import org.openqa.selenium.support.FindBy;
 
 public class ManagerPage extends ParentBaseClass {
 
-    @FindBy(className = "btn home")
-    private WebElement homeButton;
-
     @FindBy(xpath = "//button[@class='btn btn-lg tab'][@ng-click='addCust()']")
     private WebElement addCustomerButton;
 
@@ -23,20 +20,8 @@ public class ManagerPage extends ParentBaseClass {
         super(driver);
     }
 
-    public WebElement clickHomeButton() {
-        return homeButton;
-    }
-
-    public WebElement clickAddCustomerButton() {
-        return addCustomerButton;
-    }
-
-    public WebElement clickOpenAccountButton() {
-        return openAccountButton;
-    }
-
-    public WebElement clickCustomersButton() {
-        return customersButton;
+    public void clickAddCustomerButton() {
+        addCustomerButton.click();
     }
 
 }

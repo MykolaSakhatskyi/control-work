@@ -15,27 +15,23 @@ public class NewCustomerCanNotMakeTransactionsTest extends BaseTest {
     @Test
     public void checkThatNewCustomerCanNotMakeTransactions () {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.clickBankManagerLoginButton().click();
+        loginPage.clickBankManagerLoginButton();
 
         ManagerPage managerPage = new ManagerPage(driver);
-        managerPage.clickAddCustomerButton().click();
+        managerPage.clickAddCustomerButton();
 
         AddCustomerPage addCustomerPage = new AddCustomerPage(driver);
         addCustomerPage.enterNewUser(firstName, lastName, postCode);
-        addCustomerPage.clickAddCustomerButton().click();
-        driver.switchTo().alert().accept();
-        addCustomerPage.clickHomeButton().click();
+        alertAccept();
+        addCustomerPage.clickHomeButton();
 
-        loginPage.clickCustomerLoginButton().click();
+        loginPage.clickCustomerLoginButton();
 
         CustomerLoginPage customerLoginPage = new CustomerLoginPage(driver);
-        customerLoginPage.clickDropdown().click();
         customerLoginPage.selectNewCustomer(newCustomer);
-        customerLoginPage.clickDropdown().click();
-        customerLoginPage.clickLoginButton().click();
+        customerLoginPage.clickLoginButton();
 
         AccountPage accountPage = new AccountPage(driver);
         Assert.assertEquals(accountPage.getWelcomeText().getText(),"Please open an account with us.");
-        Assert.assertTrue(accountPage.clickTransactionsTab().isEnabled(),"Transactions button is present on account page");
     }
 }

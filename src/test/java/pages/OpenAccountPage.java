@@ -24,16 +24,8 @@ public class OpenAccountPage extends ParentBaseClass {
         super(driver);
     }
 
-    public WebElement clickCustomerNameDropdownList() {
-        return customerNameDropdownList;
-    }
-
-    public WebElement clickCurrencyDropdownList() {
-        return currencyDropdownList;
-    }
-
-    public WebElement clickProcessButton() {
-        return processButton;
+    public void clickProcessButton() {
+        processButton.click();
     }
 
     public void selectNewCustomerAndCurrency(WebElement dropdownList, String newCustomerOrCurrency) {
@@ -41,8 +33,16 @@ public class OpenAccountPage extends ParentBaseClass {
         selectNewCustomerOrCurrency.selectByVisibleText(newCustomerOrCurrency);
     }
 
-    public WebElement clickHomeButton() {
-        return homeButton;
+    public void selectNewCustomer(String newCustomer) {
+        selectNewCustomerAndCurrency(customerNameDropdownList, newCustomer);
+    }
+
+    public void selectCurrency(String currency) {
+        selectNewCustomerAndCurrency(currencyDropdownList, currency);
+    }
+
+    public void clickHomeButton() {
+        homeButton.click();
     }
 
 }

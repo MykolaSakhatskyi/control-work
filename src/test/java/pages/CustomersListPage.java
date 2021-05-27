@@ -1,7 +1,6 @@
 package pages;
 
 import helpers.ParentBaseClass;
-import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -40,21 +39,21 @@ public class CustomersListPage extends ParentBaseClass {
         return cellPostCode;
     }
 
-    public WebElement clickDeleteButton() {
-        return deleteButton;
+    public void clickDeleteButton() {
+        deleteButton.click();
     }
 
     public WebElement getCellLastName() {
         return cellLastName;
     }
 
-    public String deletedCustomer() {
+    public boolean deletedCustomer() {
         try {
-            driver.findElement(By.xpath("//table[@class='table table-bordered table-striped']/tbody/tr[1]/td[1]"));
+            cellFirstName.isDisplayed();
+            return false;
             }
         catch (NoSuchElementException e){
-            return null;}
-        return "";
+            return true;}
     }
 
 }

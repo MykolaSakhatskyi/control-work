@@ -26,4 +26,8 @@ public abstract class BaseTest {
         driver.quit();
     }
 
+    public void alertAccept() {
+        driver.switchTo().alert().accept();
+    }
+
 }

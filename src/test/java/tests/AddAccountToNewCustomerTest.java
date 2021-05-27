@@ -17,35 +17,28 @@ public class AddAccountToNewCustomerTest extends BaseTest {
     @Test
     public void addAccountToNewCustomerAndCheckThatAccountWasAdded() {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.clickBankManagerLoginButton().click();
+        loginPage.clickBankManagerLoginButton();
 
         ManagerPage managerPage = new ManagerPage(driver);
-        managerPage.clickAddCustomerButton().click();
+        managerPage.clickAddCustomerButton();
 
         AddCustomerPage addCustomerPage = new AddCustomerPage(driver);
         addCustomerPage.enterNewUser(firstName, lastName, postCode);
-        addCustomerPage.clickAddCustomerButton().click();
-        driver.switchTo().alert().accept();
-        addCustomerPage.clickOpenAccountButton().click();
+        alertAccept();
+        addCustomerPage.clickOpenAccountButton();
 
         OpenAccountPage openAccountPage = new OpenAccountPage(driver);
-        openAccountPage.clickCustomerNameDropdownList().click();
-        openAccountPage.selectNewCustomerAndCurrency(openAccountPage.clickCustomerNameDropdownList(), newCustomer);
-        openAccountPage.clickCustomerNameDropdownList().click();
-        openAccountPage.clickCurrencyDropdownList().click();
-        openAccountPage.selectNewCustomerAndCurrency(openAccountPage.clickCurrencyDropdownList(),currency);
-        openAccountPage.clickCurrencyDropdownList().click();
-        openAccountPage.clickProcessButton().click();
-        driver.switchTo().alert().accept();
-        openAccountPage.clickHomeButton().click();
+        openAccountPage.selectNewCustomer(newCustomer);
+        openAccountPage.selectCurrency(currency);
+        openAccountPage.clickProcessButton();
+        alertAccept();
+        openAccountPage.clickHomeButton();
 
-        loginPage.clickCustomerLoginButton().click();
+        loginPage.clickCustomerLoginButton();
 
         CustomerLoginPage customerLoginPage = new CustomerLoginPage(driver);
-        customerLoginPage.clickDropdown().click();
         customerLoginPage.selectNewCustomer(newCustomer);
-        customerLoginPage.clickDropdown().click();
-        customerLoginPage.clickLoginButton().click();
+        customerLoginPage.clickLoginButton();
 
         AccountPage accountPage = new AccountPage(driver);
         Assert.assertNotNull(accountPage.checkAccountNumber(),"Customer doesn't have account");

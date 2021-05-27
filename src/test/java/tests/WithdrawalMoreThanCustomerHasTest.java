@@ -20,45 +20,38 @@ public class WithdrawalMoreThanCustomerHasTest extends BaseTest {
     @Test
     public void withdrawalForAmountMoreThanCustomerHas() {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.clickBankManagerLoginButton().click();
+        loginPage.clickBankManagerLoginButton();
 
         ManagerPage managerPage = new ManagerPage(driver);
-        managerPage.clickAddCustomerButton().click();
+        managerPage.clickAddCustomerButton();
 
         AddCustomerPage addCustomerPage = new AddCustomerPage(driver);
         addCustomerPage.enterNewUser(firstName, lastName, postCode);
-        addCustomerPage.clickAddCustomerButton().click();
-        driver.switchTo().alert().accept();
-        addCustomerPage.clickOpenAccountButton().click();
+        alertAccept();
+        addCustomerPage.clickOpenAccountButton();
 
         OpenAccountPage openAccountPage = new OpenAccountPage(driver);
-        openAccountPage.clickCustomerNameDropdownList().click();
-        openAccountPage.selectNewCustomerAndCurrency(openAccountPage.clickCustomerNameDropdownList(), newCustomer);
-        openAccountPage.clickCustomerNameDropdownList().click();
-        openAccountPage.clickCurrencyDropdownList().click();
-        openAccountPage.selectNewCustomerAndCurrency(openAccountPage.clickCurrencyDropdownList(),currency);
-        openAccountPage.clickCurrencyDropdownList().click();
-        openAccountPage.clickProcessButton().click();
-        driver.switchTo().alert().accept();
-        openAccountPage.clickHomeButton().click();
+        openAccountPage.selectNewCustomer(newCustomer);
+        openAccountPage.selectCurrency(currency);
+        openAccountPage.clickProcessButton();
+        alertAccept();
+        openAccountPage.clickHomeButton();
 
-        loginPage.clickCustomerLoginButton().click();
+        loginPage.clickCustomerLoginButton();
 
         CustomerLoginPage customerLoginPage = new CustomerLoginPage(driver);
-        customerLoginPage.clickDropdown().click();
         customerLoginPage.selectNewCustomer(newCustomer);
-        customerLoginPage.clickDropdown().click();
-        customerLoginPage.clickLoginButton().click();
+        customerLoginPage.clickLoginButton();
 
         AccountPage accountPage = new AccountPage(driver);
         Assert.assertEquals(accountPage.checkBalance().getText(), startingBalance);
-        accountPage.clickDepositTab().click();
+        accountPage.clickDepositTab();
         accountPage.sendAmountDepositAndWithdrawField().sendKeys(deposit);
-        accountPage.clickDepositAndWithdrawButton().click();
+        accountPage.clickDepositAndWithdrawButton();
         driver.navigate().refresh();
-        accountPage.clickWithdrawTab().click();
+        accountPage.clickWithdrawTab();
         accountPage.sendAmountDepositAndWithdrawField().sendKeys(withdraw);
-        accountPage.clickDepositAndWithdrawButton().click();
+        accountPage.clickDepositAndWithdrawButton();
         Assert.assertEquals(accountPage.checkBalance().getText(),deposit);
         Assert.assertEquals(accountPage.getSuccessfulOrErrorMassage().getText(),errorMassage);
     }
